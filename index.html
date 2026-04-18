@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuerpos que Sienten · Danza, Emociones e IA</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,700&family=Fraunces:ital,wght@0,300;0,600;0,800;1,300;1,600;1,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- FONDO BLOBS -->
+<div class="bg-blob" style="width:500px;height:500px;background:#FFD54F;top:-200px;right:-150px;"></div>
+<div class="bg-blob" style="width:400px;height:400px;background:#F48FB1;bottom:-100px;left:-120px;"></div>
+<div class="bg-blob" style="width:300px;height:300px;background:#81D4FA;top:40%;left:60%;"></div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<div id="app">
+
+<!-- ██████████ PANTALLA DE INICIO ██████████ -->
+<div class="screen activa" id="inicio">
+
+  <div class="hero-container">
+    <!-- Ilustración SVG — estudiantes bailando -->
+    <svg class="hero-illustration" viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
+      <!-- Fondo decorativo -->
+      <ellipse cx="200" cy="230" rx="180" ry="24" fill="#FFE0B2" opacity="0.6"/>
+      <!-- Figura 1 — bailando izquierda -->
+      <g transform="translate(70,40)">
+        <ellipse cx="50" cy="110" rx="22" ry="36" fill="#FFCCBC"/>
+        <circle cx="50" cy="60" r="26" fill="#FFCCBC"/>
+        <ellipse cx="50" cy="48" rx="27" ry="18" fill="#5D4037"/>
+        <circle cx="43" cy="62" r="3" fill="#333"/>
+        <circle cx="57" cy="62" r="3" fill="#333"/>
+        <path d="M 43 72 Q 50 80 57 72" stroke="#333" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <ellipse cx="50" cy="118" rx="22" ry="18" fill="#FF8A65"/>
+        <path d="M 30 130 Q 20 165 50 170 Q 80 165 70 130 Z" fill="#F06292"/>
+        <path d="M 30 110 Q 10 85 15 65" stroke="#FFCCBC" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <path d="M 70 110 Q 85 125 80 145" stroke="#FFCCBC" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <path d="M 40 168 Q 35 195 30 210" stroke="#FFCCBC" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <path d="M 60 168 Q 65 195 75 210" stroke="#FFCCBC" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <ellipse cx="30" cy="213" rx="12" ry="7" fill="#5D4037"/>
+        <ellipse cx="75" cy="213" rx="12" ry="7" fill="#5D4037"/>
+      </g>
+      <!-- Figura 2 — bailando centro -->
+      <g transform="translate(170,20)">
+        <ellipse cx="55" cy="115" rx="20" ry="33" fill="#FFCCBC"/>
+        <circle cx="55" cy="65" r="24" fill="#8D5524"/>
+        <ellipse cx="55" cy="50" rx="25" ry="18" fill="#3E2723"/>
+        <circle cx="48" cy="67" r="3" fill="#333"/>
+        <circle cx="62" cy="67" r="3" fill="#333"/>
+        <path d="M 48 76 Q 55 84 62 76" stroke="#333" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <ellipse cx="55" cy="120" rx="20" ry="16" fill="#26C6DA"/>
+        <path d="M 36 130 Q 28 162 55 168 Q 82 162 74 130 Z" fill="#00BCD4"/>
+        <path d="M 36 108 Q 18 88 22 68" stroke="#FFCCBC" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <path d="M 74 108 Q 92 88 88 68" stroke="#FFCCBC" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <path d="M 45 166 Q 40 193 36 210" stroke="#FFCCBC" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <path d="M 65 166 Q 70 193 74 210" stroke="#FFCCBC" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <ellipse cx="36" cy="213" rx="11" ry="6" fill="#BF360C"/>
+        <ellipse cx="74" cy="213" rx="11" ry="6" fill="#BF360C"/>
+      </g>
+      <!-- Figura 3 — bailando derecha -->
+      <g transform="translate(270,50)">
+        <ellipse cx="48" cy="108" rx="20" ry="33" fill="#D7A57A"/>
+        <circle cx="48" cy="60" r="24" fill="#D7A57A"/>
+        <ellipse cx="48" cy="48" rx="25" ry="17" fill="#4E342E"/>
+        <circle cx="41" cy="62" r="3" fill="#333"/>
+        <circle cx="55" cy="62" r="3" fill="#333"/>
+        <path d="M 41 71 Q 48 79 55 71" stroke="#333" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <ellipse cx="48" cy="116" rx="20" ry="16" fill="#AED581"/>
+        <path d="M 30 128 Q 22 158 48 164 Q 74 158 66 128 Z" fill="#9CCC65"/>
+        <path d="M 68 106 Q 86 80 82 60" stroke="#D7A57A" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <path d="M 30 106 Q 16 120 18 142" stroke="#D7A57A" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <path d="M 38 162 Q 34 190 30 205" stroke="#D7A57A" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <path d="M 58 162 Q 62 190 68 205" stroke="#D7A57A" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <ellipse cx="30" cy="208" rx="11" ry="6" fill="#5D4037"/>
+        <ellipse cx="68" cy="208" rx="11" ry="6" fill="#5D4037"/>
+      </g>
+      <!-- Notas musicales decorativas -->
+      <text x="30" y="80" font-size="28" opacity="0.4" fill="#FF7043">♪</text>
+      <text x="340" y="100" font-size="22" opacity="0.35" fill="#EC407A">♫</text>
+      <text x="180" y="18" font-size="20" opacity="0.4" fill="#FF9800">♩</text>
+      <text x="90" y="235" font-size="16" opacity="0.3" fill="#7E57C2">✦</text>
+      <text x="310" y="240" font-size="16" opacity="0.3" fill="#FF7043">✦</text>
+    </svg>
+
+    <div class="hero-badge">🎓 Proyecto educativo · EdTech</div>
+
+    <h1 class="hero-title">
+      <span class="title-line1">Cuerpos</span>
+      <span class="title-line2">que Sienten</span>
+    </h1>
+
+    <p class="hero-desc">
+      Danza, emociones e inteligencia artificial.<br>
+      Explora lo que sientes a través del movimiento y la cumbia colombiana.
+    </p>
+
+    <div class="hero-features">
+      <span class="feature-chip">💃 Coreografía con IA</span>
+      <span class="feature-chip">🎵 Música adaptativa</span>
+      <span class="feature-chip">🧠 Reflexión emocional</span>
+    </div>
+
+    <button class="btn btn-primario btn-lg" onclick="iniciarExperiencia()">
+      ✦ Iniciar experiencia
+    </button>
+
+    <p class="hero-footer-note">Proyecto de danza socioemocional · Cumbia colombiana</p>
+  </div>
+</div>
+
+<!-- ██████████ PANTALLA MÓDULOS ██████████ -->
+<div class="screen" id="modulos">
+
+  <!-- Nav Top -->
+  <nav class="nav-top">
+    <span class="nav-brand">💃 CQS</span>
+    <span class="modulo-paso" id="nav-1" onclick="irA(1)">1 · Emociones</span>
+    <span class="sep-nav">›</span>
+    <span class="modulo-paso" id="nav-2" onclick="irA(2)">2 · Coreografía</span>
+    <span class="sep-nav">›</span>
+    <span class="modulo-paso" id="nav-3" onclick="irA(3)">3 · Música</span>
+    <span class="sep-nav">›</span>
+    <span class="modulo-paso" id="nav-4" onclick="irA(4)">4 · Expresión</span>
+    <span class="sep-nav">›</span>
+    <span class="modulo-paso" id="nav-5" onclick="irA(5)">5 · Reflexión</span>
+    <span class="sep-nav">›</span>
+    <span class="modulo-paso" id="nav-6" onclick="irA(6)">✦ Resultado</span>
+  </nav>
+
+  <!-- Barra de progreso -->
+  <div class="progreso-bar">
+    <div class="progreso-fill" id="progreso-fill" style="width:16%;"></div>
+  </div>
+
+  <!-- ════════ MÓDULO 1: EXPLORACIÓN EMOCIONAL ════════ -->
+  <div id="m1" class="modulo-wrapper">
+    <div class="modulo-header">
+      <div class="modulo-num" style="color:var(--coral);">🎭 Módulo 01</div>
+      <h2>Exploración<br>emocional</h2>
+      <h3>¿Qué sientes en este momento?</h3>
+    </div>
+
+    <div class="illus-container">
+      <svg class="illus-sm" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="80" cy="45" r="30" fill="#FFE0B2"/>
+        <ellipse cx="80" cy="35" rx="31" ry="20" fill="#5D4037"/>
+        <circle cx="70" cy="47" r="3.5" fill="#333"/>
+        <circle cx="90" cy="47" r="3.5" fill="#333"/>
+        <path d="M 70 58 Q 80 68 90 58" stroke="#333" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <ellipse cx="80" cy="82" rx="20" ry="28" fill="#FF7043"/>
+        <path d="M 110 25 C 110 20 115 18 118 22 C 121 18 126 20 126 25 C 126 30 118 36 118 36 C 118 36 110 30 110 25 Z" fill="#E91E63" opacity="0.8"/>
+        <path d="M 32 40 C 32 36 36 34 38 37 C 40 34 44 36 44 40 C 44 44 38 49 38 49 C 38 49 32 44 32 40 Z" fill="#FF9800" opacity="0.7"/>
+      </svg>
+    </div>
+
+    <div class="campo-grupo">
+      <label class="label-campo">Selecciona tu emoción</label>
+      <div class="emoji-grid" id="emociones-rapidas">
+        <button class="emoji-btn" onclick="seleccionarEmocion(this, 'alegría')">😄 Alegría</button>
+        <button class="emoji-btn" onclick="seleccionarEmocion(this, 'tristeza')">😢 Tristeza</button>
+        <button class="emoji-btn" onclick="seleccionarEmocion(this, 'energía')">⚡ Energía</button>
+        <button class="emoji-btn" onclick="seleccionarEmocion(this, 'calma')">🌿 Calma</button>
+        <button class="emoji-btn" onclick="seleccionarEmocion(this, 'ansiedad')">😟 Ansiedad</button>
+        <button class="emoji-btn" onclick="seleccionarEmocion(this, 'amor')">❤️ Amor</button>
+        <button class="emoji-btn" onclick="seleccionarEmocion(this, 'nostalgia')">🌅 Nostalgia</button>
+        <button class="emoji-btn" onclick="seleccionarEmocion(this, 'confusión')">💭 Confusión</button>
+      </div>
+    </div>
+
+    <div class="campo-grupo">
+      <label class="label-campo" for="texto-emocion">Cuéntame cómo te sientes hoy…</label>
+      <textarea id="texto-emocion" rows="4"
+        placeholder="Hoy me siento un poco cansado/a pero también con ganas de bailar…"></textarea>
+    </div>
+
+    <button class="btn btn-primario" onclick="analizarEmocion()" id="btn-analizar">
+      🎭 Analizar emoción con IA
+    </button>
+
+    <div class="ia-cargando oculto" id="loader-m1">
+      <div class="dot-loader"><span></span><span></span><span></span></div>
+      La IA está leyendo tu emoción…
+    </div>
+
+    <div class="card-ia oculto" id="resultado-m1">
+      <div id="contenido-m1" class="ia-texto"></div>
+    </div>
+
+    <div class="nav-bottom">
+      <span class="nav-bottom-info">Módulo 1 de 5</span>
+      <button class="btn btn-secundario" onclick="irA(2)">Siguiente → Coreografía</button>
+    </div>
+  </div>
+
+  <!-- ════════ MÓDULO 2: COREOGRAFÍA ════════ -->
+  <div id="m2" class="modulo-wrapper oculto">
+    <div class="modulo-header">
+      <div class="modulo-num" style="color:var(--rose2);">💃 Módulo 02</div>
+      <h2>Coreografía<br>con IA</h2>
+      <h3>Construye tu secuencia de cumbia</h3>
+    </div>
+
+    <div class="illus-container">
+      <svg class="illus-sm" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(20,10)">
+          <circle cx="35" cy="35" r="20" fill="#FFCCBC"/>
+          <ellipse cx="35" cy="27" rx="21" ry="14" fill="#4E342E"/>
+          <ellipse cx="35" cy="62" rx="16" ry="24" fill="#FF8A65"/>
+          <path d="M 21 55 Q 10 40 14 25" stroke="#FFCCBC" stroke-width="8" fill="none" stroke-linecap="round"/>
+          <path d="M 49 55 Q 60 68 55 82" stroke="#FFCCBC" stroke-width="8" fill="none" stroke-linecap="round"/>
+        </g>
+        <g transform="translate(90,10)">
+          <circle cx="35" cy="35" r="20" fill="#FFCCBC"/>
+          <ellipse cx="35" cy="27" rx="21" ry="14" fill="#1A237E"/>
+          <ellipse cx="35" cy="62" rx="16" ry="24" fill="#42A5F5"/>
+          <path d="M 49 55 Q 60 40 56 25" stroke="#FFCCBC" stroke-width="8" fill="none" stroke-linecap="round"/>
+          <path d="M 21 55 Q 10 68 15 82" stroke="#FFCCBC" stroke-width="8" fill="none" stroke-linecap="round"/>
+        </g>
+        <path d="M 75 55 Q 85 45 95 55" stroke="#FFD54F" stroke-width="3" fill="none" stroke-dasharray="4 3"/>
+        <text x="72" y="100" font-size="14" fill="#FF7043" opacity="0.6">♫</text>
+        <text x="40" y="108" font-size="12" fill="#EC407A" opacity="0.5">✦</text>
+        <text x="100" y="108" font-size="12" fill="#FF9800" opacity="0.5">✦</text>
+      </svg>
+    </div>
+
+    <div class="card">
+      <p style="color:var(--text2);font-size:0.9rem;margin-bottom:1rem;font-weight:600;">
+        La IA generará pasos de cumbia adaptados a tu estado emocional. ¡Edítalos a tu gusto!
+      </p>
+      <button class="btn btn-acento" onclick="generarCoreografia()" id="btn-coreografia">
+        💃 Generar mi coreografía
+      </button>
+    </div>
+
+    <div class="ia-cargando oculto" id="loader-m2">
+      <div class="dot-loader"><span></span><span></span><span></span></div>
+      Creando tu coreografía personalizada…
+    </div>
+
+    <div id="resultado-m2" class="oculto">
+      <div id="pasos-lista" class="pasos-lista"></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:1.25rem;">
+        <button class="btn btn-sm btn-secundario" onclick="generarCoreografia()">↺ Regenerar</button>
+        <button class="btn btn-sm btn-amarillo" onclick="agregarPaso()">+ Agregar paso</button>
+      </div>
+      <div class="card-ia">
+        <div id="consejos-coreografia" class="ia-texto" style="font-size:0.9rem;line-height:1.7;"></div>
+      </div>
+    </div>
+
+    <div class="nav-bottom">
+      <button class="btn btn-sm btn-secundario" onclick="irA(1)">← Emociones</button>
+      <button class="btn btn-secundario" onclick="irA(3)">Siguiente → Música</button>
+    </div>
+  </div>
+
+  <!-- ════════ MÓDULO 3: MÚSICA ════════ -->
+  <div id="m3" class="modulo-wrapper oculto">
+    <div class="modulo-header">
+      <div class="modulo-num" style="color:var(--orange);">🎵 Módulo 03</div>
+      <h2>Ritmo y<br>Música</h2>
+      <h3>Define el tempo de tu danza</h3>
+    </div>
+
+    <div class="ritmo-cards">
+      <div class="ritmo-card" id="rc-1" onclick="seleccionarRitmoCard(1)">
+        <span class="ritmo-card-icon">🐢</span>
+        <div class="ritmo-card-label">Lento</div>
+        <div class="ritmo-card-bpm">60 BPM · Suave</div>
+      </div>
+      <div class="ritmo-card activo" id="rc-2" onclick="seleccionarRitmoCard(2)">
+        <span class="ritmo-card-icon">⚡</span>
+        <div class="ritmo-card-label">Medio</div>
+        <div class="ritmo-card-bpm">90 BPM · Festivo</div>
+      </div>
+      <div class="ritmo-card" id="rc-3" onclick="seleccionarRitmoCard(3)">
+        <span class="ritmo-card-icon">🔥</span>
+        <div class="ritmo-card-label">Rápido</div>
+        <div class="ritmo-card-bpm">130 BPM · Eufórico</div>
+      </div>
+    </div>
+
+    <div class="music-player" id="music-player">
+      <div class="music-track-info">
+        <div class="music-thumb" id="music-thumb">🎵</div>
+        <div>
+          <div class="music-title" id="music-title">Selecciona un ritmo</div>
+          <div class="music-sub" id="music-sub">Listo para reproducir</div>
+        </div>
+      </div>
+
+      <div class="visualizador-ritmo" id="viz-ritmo"></div>
+
+      <div class="music-controls">
+        <button class="music-btn" onclick="musicAnterior()" title="Anterior">⏮</button>
+        <button class="music-btn play-btn" onclick="toggleRitmo()" id="btn-play">▶</button>
+        <button class="music-btn" onclick="musicSiguiente()" title="Siguiente">⏭</button>
+      </div>
+
+      <div class="volume-row">
+        <span>🔈</span>
+        <input type="range" class="volume-slider" id="vol-slider" min="0" max="100" value="70" oninput="ajustarVolumen(this.value)">
+        <span>🔊</span>
+      </div>
+    </div>
+
+    <div class="ia-cargando oculto" id="loader-m3">
+      <div class="dot-loader"><span></span><span></span><span></span></div>
+      Analizando el ritmo ideal para ti…
+    </div>
+
+    <div class="card-ia oculto" id="resultado-m3">
+      <div id="contenido-m3" class="ia-texto" style="font-size:0.9rem;line-height:1.7;"></div>
+    </div>
+
+    <button class="btn btn-amarillo" onclick="analizarMusica()" id="btn-musica" style="margin:1rem 0;">
+      🎵 Sugerir ambiente musical con IA
+    </button>
+
+    <div class="nav-bottom">
+      <button class="btn btn-sm btn-secundario" onclick="irA(2)">← Coreografía</button>
+      <button class="btn btn-secundario" onclick="irA(4)">Siguiente → Expresión</button>
+    </div>
+  </div>
+
+  <!-- ════════ MÓDULO 4: EXPRESIÓN CORPORAL ════════ -->
+  <div id="m4" class="modulo-wrapper oculto">
+    <div class="modulo-header">
+      <div class="modulo-num" style="color:var(--teal);">🌀 Módulo 04</div>
+      <h2>Expresión<br>corporal</h2>
+      <h3>Muestra tu danza al mundo</h3>
+    </div>
+
+    <div class="illus-container">
+      <svg class="illus-md" viewBox="0 0 220 170" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="110" cy="155" rx="70" ry="10" fill="#FFE0B2" opacity="0.5"/>
+        <circle cx="110" cy="55" r="32" fill="#FFCCBC"/>
+        <ellipse cx="110" cy="42" rx="33" ry="22" fill="#212121"/>
+        <circle cx="100" cy="57" r="4" fill="#333"/>
+        <circle cx="120" cy="57" r="4" fill="#333"/>
+        <path d="M 100 67 Q 110 78 120 67" stroke="#333" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <ellipse cx="110" cy="105" rx="24" ry="38" fill="#FF8A65"/>
+        <path d="M 86 120 Q 72 160 110 165 Q 148 160 134 120 Z" fill="#EC407A"/>
+        <path d="M 88 95 Q 55 70 35 55" stroke="#FFCCBC" stroke-width="12" fill="none" stroke-linecap="round"/>
+        <path d="M 132 95 Q 165 70 185 55" stroke="#FFCCBC" stroke-width="12" fill="none" stroke-linecap="round"/>
+        <circle cx="35" cy="55" r="8" fill="#FFCCBC"/>
+        <circle cx="185" cy="55" r="8" fill="#FFCCBC"/>
+        <text x="20" y="35" font-size="20" fill="#FF9800" opacity="0.7">♫</text>
+        <text x="185" y="30" font-size="18" fill="#EC407A" opacity="0.7">♪</text>
+        <text x="95" y="20" font-size="16" fill="#7C4DFF" opacity="0.6">✦</text>
+        <text x="150" y="140" font-size="14" fill="#FF7043" opacity="0.5">💫</text>
+        <text x="55" y="145" font-size="14" fill="#26C6DA" opacity="0.5">⭐</text>
+      </svg>
+    </div>
+
+    <div class="card" style="margin-bottom:1.5rem;">
+      <p style="color:var(--text2);font-size:0.9rem;line-height:1.6;font-weight:600;">
+        Graba o sube un video donde practiques tu coreografía. Un ensayo de 30 segundos es suficiente, ¡lo que importa es expresarte! 🎬
+      </p>
+    </div>
+
+    <label class="label-campo">Sube tu video de danza</label>
+    <div class="zona-video" id="zona-video">
+      <input type="file" id="input-video" accept="video/*" onchange="cargarVideo(event)">
+      <div id="placeholder-video">
+        <div style="font-size:3.5rem;margin-bottom:1rem;">🎬</div>
+        <p style="font-size:1rem;font-weight:800;color:var(--coral);">Haz clic o arrastra tu video aquí</p>
+        <p style="font-size:0.85rem;color:var(--text2);margin-top:0.5rem;font-weight:600;">MP4, MOV, WebM · Máx. 100MB</p>
+      </div>
+      <div id="video-cargado" class="oculto" style="position:relative;z-index:1;">
+        <video id="preview-video" controls></video>
+        <p style="font-size:0.85rem;color:var(--teal);margin-top:0.75rem;font-weight:800;" id="nombre-video"></p>
+      </div>
+    </div>
+
+    <div class="card-ia" style="margin-top:1.5rem;">
+      <p style="font-size:0.9rem;color:var(--text);line-height:1.7;font-weight:600;">
+        <strong style="color:var(--rose2);">✦ Consejo de expresión:</strong><br>
+        Concéntrate en cómo tu cuerpo refleja la emoción que identificaste. La cumbia invita a mover las caderas con libertad, los pies con picardía y los brazos con apertura. No hay pasos incorrectos cuando expresas algo verdadero. 💃
+      </p>
+    </div>
+
+    <div class="card" style="margin-top:1rem;">
+      <label class="label-campo">💡 Tips de expresión corporal</label>
+      <div class="chips-row">
+        <span class="chip chip-coral">🌀 Deja fluir tus caderas</span>
+        <span class="chip chip-rose">👣 Pies con energía</span>
+        <span class="chip chip-teal">💨 Respira profundo</span>
+        <span class="chip chip-yellow">✨ Sin juzgarte</span>
+      </div>
+    </div>
+
+    <div class="nav-bottom">
+      <button class="btn btn-sm btn-secundario" onclick="irA(3)">← Música</button>
+      <button class="btn btn-secundario" onclick="irA(5)">Siguiente → Reflexión</button>
+    </div>
+  </div>
+
+  <!-- ════════ MÓDULO 5: REFLEXIÓN ════════ -->
+  <div id="m5" class="modulo-wrapper oculto">
+    <div class="modulo-header">
+      <div class="modulo-num" style="color:#5C6BC0;">🌟 Módulo 05</div>
+      <h2>Reflexión<br>con IA</h2>
+      <h3>¿Qué descubriste sobre ti mismo/a?</h3>
+    </div>
+
+    <div class="campo-grupo">
+      <label class="label-campo" for="texto-reflexion">Describe tu experiencia de danza de hoy…</label>
+      <textarea id="texto-reflexion" rows="5"
+        placeholder="Me di cuenta de que cuando bailo me olvido de todo lo que me preocupa. Los pasos de cumbia me hicieron sentir…"></textarea>
+    </div>
+
+    <div class="campo-grupo">
+      <label class="label-campo">¿Qué emociones surgieron durante el movimiento?</label>
+      <div class="emoji-grid" id="emociones-post">
+        <button class="emoji-btn" onclick="seleccionarEmocionPost(this, 'liberación')">🕊️ Liberación</button>
+        <button class="emoji-btn" onclick="seleccionarEmocionPost(this, 'alegría')">✨ Alegría</button>
+        <button class="emoji-btn" onclick="seleccionarEmocionPost(this, 'conexión')">🌐 Conexión</button>
+        <button class="emoji-btn" onclick="seleccionarEmocionPost(this, 'cansancio')">😮‍💨 Cansancio</button>
+        <button class="emoji-btn" onclick="seleccionarEmocionPost(this, 'orgullo')">🏆 Orgullo</button>
+        <button class="emoji-btn" onclick="seleccionarEmocionPost(this, 'paz')">🌊 Paz</button>
+      </div>
+    </div>
+
+    <button class="btn btn-verde" onclick="reflexionar()" id="btn-reflexion">
+      🌟 Reflexionar con IA
+    </button>
+
+    <div class="ia-cargando oculto" id="loader-m5">
+      <div class="dot-loader"><span></span><span></span><span></span></div>
+      La IA está procesando tu reflexión…
+    </div>
+
+    <div class="card-ia oculto" id="resultado-m5">
+      <div id="contenido-m5" class="ia-texto" style="font-size:0.9rem;line-height:1.7;"></div>
+    </div>
+
+    <div class="nav-bottom">
+      <button class="btn btn-sm btn-secundario" onclick="irA(4)">← Expresión</button>
+      <button class="btn btn-secundario" onclick="irA(6)">Ver mi resultado ✦</button>
+    </div>
+  </div>
+
+  <!-- ════════ MÓDULO 6: RESULTADO FINAL ════════ -->
+  <div id="m6" class="modulo-wrapper oculto">
+    <div class="modulo-header">
+      <div class="modulo-num" style="color:var(--orange);">✦ Resultado final</div>
+      <h2>Tu proceso<br>completo</h2>
+      <h3>Un resumen de tu experiencia hoy</h3>
+    </div>
+
+    <div class="illus-container" style="margin-bottom:2rem;">
+      <svg width="260" height="140" viewBox="0 0 260 140" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="130" cy="128" rx="120" ry="10" fill="#FFE0B2" opacity="0.4"/>
+        <g transform="translate(15,10)">
+          <circle cx="35" cy="35" r="22" fill="#FFCCBC"/>
+          <ellipse cx="35" cy="25" rx="23" ry="15" fill="#5D4037"/>
+          <ellipse cx="35" cy="65" rx="18" ry="28" fill="#FF8A65"/>
+          <path d="M 18 58 Q 5 35 10 15" stroke="#FFCCBC" stroke-width="10" fill="none" stroke-linecap="round"/>
+          <path d="M 52 58 Q 62 70 58 90" stroke="#FFCCBC" stroke-width="10" fill="none" stroke-linecap="round"/>
+        </g>
+        <g transform="translate(100,0)">
+          <circle cx="30" cy="30" r="24" fill="#8D5524"/>
+          <ellipse cx="30" cy="18" rx="26" ry="16" fill="#1A237E"/>
+          <ellipse cx="30" cy="62" rx="19" ry="30" fill="#42A5F5"/>
+          <path d="M 12 52 Q -5 28 2 8" stroke="#8D5524" stroke-width="10" fill="none" stroke-linecap="round"/>
+          <path d="M 48 52 Q 65 28 58 8" stroke="#8D5524" stroke-width="10" fill="none" stroke-linecap="round"/>
+        </g>
+        <g transform="translate(175,12)">
+          <circle cx="35" cy="34" r="22" fill="#D7A57A"/>
+          <ellipse cx="35" cy="24" rx="23" ry="15" fill="#4E342E"/>
+          <ellipse cx="35" cy="64" rx="18" ry="28" fill="#AED581"/>
+          <path d="M 18 56 Q 5 70 8 90" stroke="#D7A57A" stroke-width="10" fill="none" stroke-linecap="round"/>
+          <path d="M 52 56 Q 65 35 58 15" stroke="#D7A57A" stroke-width="10" fill="none" stroke-linecap="round"/>
+        </g>
+        <circle cx="50" cy="10" r="5" fill="#FFD54F" opacity="0.8"/>
+        <circle cx="200" cy="8" r="4" fill="#EC407A" opacity="0.8"/>
+        <circle cx="130" cy="5" r="6" fill="#7C4DFF" opacity="0.7"/>
+        <circle cx="80" cy="20" r="3" fill="#26C6DA" opacity="0.7"/>
+        <circle cx="165" cy="18" r="3" fill="#FF9800" opacity="0.7"/>
+        <text x="235" y="30" font-size="18" fill="#FF7043" opacity="0.6">✦</text>
+        <text x="10" y="120" font-size="16" fill="#EC407A" opacity="0.5">♫</text>
+        <text x="230" y="115" font-size="16" fill="#FF9800" opacity="0.5">♪</text>
+      </svg>
+    </div>
+
+    <div class="resumen-grid" id="panel-resumen">
+      <!-- Se llena con JS -->
+    </div>
+
+    <div class="card-ia">
+      <p style="font-size:0.78rem;font-weight:800;color:var(--rose2);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.75rem;">
+        ✦ Mensaje final de la IA
+      </p>
+      <div id="mensaje-final" class="ia-texto" style="font-size:0.95rem;line-height:1.8;"></div>
+    </div>
+
+    <div class="acciones-finales">
+      <button class="btn btn-primario" onclick="descargarResultado()">⬇ Descargar</button>
+      <button class="btn btn-acento" onclick="compartirResultado()">✦ Compartir</button>
+      <button class="btn btn-secundario" onclick="reiniciar()">↺ Nueva sesión</button>
+    </div>
+
+    <p style="font-size:0.78rem;color:var(--text3);margin-top:1.5rem;text-align:center;font-weight:600;">
+      Proyecto "Cuerpos que Sienten" · Danza, emociones e IA 💃
+    </p>
+  </div>
+
+</div><!-- fin #modulos -->
+</div><!-- fin #app -->
+
+<script src="script.js"></script>
+</body>
+</html>
